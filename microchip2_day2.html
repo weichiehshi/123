@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>智慧監控與功率控制整合系統</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" href="assets/css/main2.css"/>
+		<link href="assets/css/c3.min.css" rel="stylesheet" type="text/css">
+                <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+                <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+                <meta HTTP-EQUIV="expires" CONTENT="0">
+		<style>
+		#header {
+			background: black;
+			color: #d5d5d5;
+			cursor: default;
+			height: 5em;
+			left: 0;
+			line-height: 5em;
+			position: fixed;
+			text-align: right;
+			top: 0;
+			width: 100%;
+			z-index: 10001;
+		}
+
+			#header .inner {
+				max-width: 100em;
+				width: calc(100% - 6em);
+				margin: auto auto;
+				position: relative;
+			}
+
+				@media screen and (max-width: 480px) {
+
+					#header .inner {
+						max-width: 90%;
+						width: 90%;
+					}
+
+				}
+
+			#header .logo {
+				font-family: Microsoft JhengHei;
+				display: inline-block;
+				height: inherit;
+				left: 0;
+				line-height: inherit;
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				top: 0;
+				color: red;
+				font-size: 1.35em;
+				text-transform: none;
+				font-weight: normal;
+				padding: 0;
+			}
+
+				#header .logo:hover {
+					color: rgba(229, 71, 75, 0.75);
+				}
+
+			#header a {
+				-moz-transition: color 0.2s ease-in-out;
+				-webkit-transition: color 0.2s ease-in-out;
+				-ms-transition: color 0.2s ease-in-out;
+				transition: color 0.2s ease-in-out;
+				display: inline-block;
+				padding: 0 2em;
+				color: white;
+				text-decoration: none;
+				text-transform: uppercase;
+				font-weight: 700;
+				font-size: 0.95em;
+			}
+
+				#header a:hover {
+					color: rgba(255, 255, 255, 0.75);
+				}
+
+				#header a:last-child {
+					padding-right: 0em;
+				}
+
+				@media screen and (max-width: 736px) {
+
+					#header a {
+						padding: 0 0.5em;
+					}
+
+				}
+
+		@media screen and (max-width: 480px) {
+
+			#header {
+				min-width: 320px;
+			}
+
+		}
+
+		#chart {
+			text-align: center;
+		}	
+		#一號機 {
+			text-align: center;
+			font-size: 1.8em;
+			color: #ff6600;
+		}
+		#submit {
+		}
+		#zv { 
+			background: #3C3C3C;
+			font-size: 0.95em;
+			/*max-width: 480px;*/
+		 }
+        </style>		
+	</head>
+
+	<body id="top">
+
+				<header id="header">
+				<div class="inner"> 
+					<a href="microchip.html" class="logo"><img src= "images/Microchip_logo2.png" width=175 height=62.5 alt="microchip_logo" /></a>
+					<nav id="nav">
+						<a href="microchip.html">首頁</a>
+						<a href="microchip2_immediate.html">圖表</a>
+						<a href="camara.html">攝影機</a>
+					</nav>
+				</div>
+			    </header>
+
+			<!-- Main -->
+				<div id="main">
+					<div class="inner">
+					    <br><br>
+					    <div class="box"> 
+								<form name="form">
+									<select id="zv" name="YourLocation" onChange='Repositioning()' style="font-family: 'Microsoft JhengHei'; color: #FF9224;">
+									    
+									    <option >&nbsp;&nbsp;&nbsp;&nbsp;選擇從機：</option>
+										<option value="1">&nbsp;&nbsp;&nbsp;&nbsp;一號機電器</option>
+										<option value="2">&nbsp;&nbsp;&nbsp;&nbsp;二號機電器</option>
+										<option value="3">&nbsp;&nbsp;&nbsp;&nbsp;三號機電器</option>
+									</select>
+								</form>	<br> 				    
+	                        <h1 id="一號機">二號機電器</h1>
+	                        
+	                        <div id="chart"></div> 
+	                        
+	                        <br>
+	                        <div id="submit">	                        
+		                        <input type="submit" value="一週" onclick="location.href='microchip2_week2.html'"/> 
+		                        <input type="submit" style="background-color:#FF9224" value="一天" onclick="location.href='microchip2_day2.html'"/>
+		                        <input type="submit" value="即時" onclick="location.href='microchip2_immediate2.html'"/> 
+	                        </div>
+	                        <br>
+                        </div>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<h2> </h2>
+                        <p class="copyright">&copy; Untitled. Design: <a>簡文浩</a>. Images: <a>Internet</a>.</p>
+				</footer>
+					</div>
+
+		
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/d3.v3.min.js"></script>
+			<script src="assets/js/c3.min.js"></script>
+
+      <script>
+      get_D3();
+
+      function get_D3() {
+		$.ajax({
+		    type: 'GET',
+		    url:  'showDay2.php',
+			beforeSend :function(xmlHttp) {
+			    xmlHttp.setRequestHeader("If-Modified-Since","0");
+			    xmlHttp.setRequestHeader("Cache-Control","no-cache");
+			}
+		});
+
+        d3.json("sampleDay2.json", function(data) {
+            var modData = [];
+            console.log(data);
+            data.results.forEach(function(d, i) {
+              var item = [d.param];
+              d.val.forEach(function(j) {
+                item.push(j);
+              });
+              modData.push(item);
+            });
+
+            var chart = c3.generate({
+              data: {
+                columns: modData,
+                type: 'area-spline',
+                colors: {POWER:'#ff6600'}             
+              }
+            });
+        });
+      } setInterval("get_D3()",10000);  // 1000 = one sec  3600000 = one hour
+
+      var Rep;
+      function Repositioning() {
+      	Rep = document.form.YourLocation.value;
+      	if (Rep == 1) window.location.assign("microchip2_immediate.html");
+      	if (Rep == 3) window.location.assign("microchip2_immediate3.html");
+      }
+      	name();
+		function name() {
+			$.ajax ({
+			    type: 'GET',
+			    url:  'name.json',
+			    error: function() {
+			    alert("名稱下載失敗!");
+			    },
+			    success: function(data) {
+			    	$.each(data, function(key,val) {
+				    	JSONname1 = val.name1; JSONname2 = val.name2; JSONname3 = val.name3;
+
+				    	//$('#一號機').html(JSONname1);
+				    	$('#一號機').html(JSONname2);
+				    	//$('#name3').html(JSONname3);
+			    	});		    	
+			    }
+		    });			    		
+		}
+      </script>
+
+	</body>
+	
+</html>
+

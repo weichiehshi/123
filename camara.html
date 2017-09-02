@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>智慧監控與功率控制整合系統</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" href="assets/css/main.css"/>
+		<link href="assets/css/c3.min.css" rel="stylesheet" type="text/css">
+		<style>
+		#header {
+			background: black;
+			color: #d5d5d5;
+			cursor: default;
+			height: 5em;
+			left: 0;
+			line-height: 5em;
+			position: fixed;
+			text-align: right;
+			top: 0;
+			width: 100%;
+			z-index: 10001;
+		}
+
+			#header .inner {
+				max-width: 100em;
+				width: calc(100% - 6em);
+				margin: auto auto;
+				position: relative;
+			}
+
+				@media screen and (max-width: 480px) {
+
+					#header .inner {
+						max-width: 90%;
+						width: 90%;
+					}
+
+				}
+
+			#header .logo {
+				font-family: Microsoft JhengHei;
+				display: inline-block;
+				height: inherit;
+				left: 0;
+				line-height: inherit;
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				top: 0;
+				color: red;
+				font-size: 1.35em;
+				text-transform: none;
+				font-weight: normal;
+				padding: 0;
+			}
+
+				#header .logo:hover {
+					color: rgba(229, 71, 75, 0.75);
+				}
+
+			#header a {
+				-moz-transition: color 0.2s ease-in-out;
+				-webkit-transition: color 0.2s ease-in-out;
+				-ms-transition: color 0.2s ease-in-out;
+				transition: color 0.2s ease-in-out;
+				display: inline-block;
+				padding: 0 2em;
+				color: white;
+				text-decoration: none;
+				text-transform: uppercase;
+				font-weight: 700;
+				font-size: 0.95em;
+			}
+
+				#header a:hover {
+					color: rgba(255, 255, 255, 0.75);
+				}
+
+				#header a:last-child {
+					padding-right: 0em;
+				}
+
+				@media screen and (max-width: 736px) {
+
+					#header a {
+						padding: 0 0.5em;
+					}
+
+				}
+
+		@media screen and (max-width: 480px) {
+
+			#header {
+				min-width: 320px;
+			}
+		}
+
+        h1 {
+            font-family:Microsoft JhengHei;
+            text-align: center;
+        }		
+		</style>
+	</head>
+
+	<body id="top">
+				<header id="header">
+				<div class="inner">
+					<a href="microchip.html" class="logo"><img src= "images/Microchip_logo2.png" width=175 height=62.5 alt="microchip_logo" /></a>
+					<nav id="nav">
+						<a href="microchip.html">首頁</a>
+						<a href="microchip2_immediate.html">圖表</a>
+						<a href="camara.html">攝影機</a>
+					</nav>
+				</div>
+			    </header>
+
+			<!-- Main -->
+				<div id="main">
+					<div class="inner">
+
+					<br><br><br><br>
+
+					<h1> <iframe name="camara" 
+					src = "http://192.168.1.253/dms?nowprofileid=2&0.9282765025358104"
+						width="640" height="360" scrolling="no" frameborder="0">
+					</iframe> </h1>
+
+					
+
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<h2>關於Microchip</h2>
+						<p>微晶片科技股份有限公司（英語：Microchip Technology Inc.，英文簡寫：Microchip），是一個美國微控制器、記憶體與類比半導體製造商。它的產品包含微控制器（PIC微控制器、dsPIC / PIC24、PIC32）、序列式EEPROM、序列式SRAM、KEELOQ元件、無線電頻率（RF）元件、熱元件、功率與電池管理類比元件，也有線性、介面與混合信號元件。還有一些介面元件包含USB、ZigBee/MiWi，CANbus與Ethernet。 </p>
+
+						<p class="copyright">&copy; Untitled. Design: <a>簡文浩</a>. Images: <a>Internet</a>.</p>
+				</footer>
+					</div>
+
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/d3.v3.min.js"></script>
+			<script src="assets/js/c3.min.js"></script>
+
+			<script>
+		     function refreshWeibo(){
+		        var mframe=$('#camara').attr("src");
+		        $("#camara").attr("src",mframe);
+		     }			
+			setTimeout("location.reload();",1000); //十分鐘定時重新整理	
+			</script>
+
+	</body>
+
+</html>
+
